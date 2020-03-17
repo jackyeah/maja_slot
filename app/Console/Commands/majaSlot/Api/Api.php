@@ -17,7 +17,7 @@ class Api
 
     public function __construct()
     {
-        self::$header = 'xxx';
+        self::$header = '0Y8sYtJi55Qeli4Z';
         self::$domain = 'https://api.integration.mj-02.com/api/MOGI';
         self::$agentCode = 'jpt';
         self::$agentName = 'jpt';
@@ -47,6 +47,25 @@ class Api
         ];
 
         $result = cURL::newRequest('post', self::$domain . '/launch-game', $params)
+            ->setHeader('Authorization', self::$header)
+            ->send();
+
+        return $result->body;
+    }
+
+    /**
+     * 取得會員餘額
+     *
+     * @param $gameAccount
+     * @return mixed
+     */
+    public function getPlayerBalance($gameAccount)
+    {
+        $params = [
+            'player_unique_id'  => $gameAccount,
+        ];
+
+        $result = cURL::newRequest('post', self::$domain . '/member-details', $params)
             ->setHeader('Authorization', self::$header)
             ->send();
 
