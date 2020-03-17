@@ -17,7 +17,7 @@ class Api
 
     public function __construct()
     {
-        self::$header = '0Y8sYtJi55Qeli4Z';
+        self::$header = 'xxx';
         self::$domain = 'https://api.integration.mj-02.com/api/MOGI';
         self::$agentCode = 'jpt';
         self::$agentName = 'jpt';
