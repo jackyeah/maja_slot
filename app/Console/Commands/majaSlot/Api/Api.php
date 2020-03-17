@@ -13,13 +13,14 @@ use anlutro\cURL\Laravel\cURL;
 
 class Api
 {
-    private static $header, $domain;
+    private static $header, $domain, $agentCode, $agentName;
 
     public function __construct()
     {
-        dd(config('Game/majaSlot.Authorization', '11'));
-        self::$header = ['Authorization' => '0Y8sYtJi55Qeli4Z'];
+        self::$header = '0Y8sYtJi55Qeli4Z';
         self::$domain = 'https://api.integration.mj-02.com/api/MOGI';
+        self::$agentCode = 'jpt';
+        self::$agentName = 'jpt';
     }
 
     /**
@@ -41,10 +42,12 @@ class Api
             'game_id'          => $game_code,
             'is_demo'          => $type,
             'callback_url'     => $callback_url,
+            'agent_code'       => self::$agentCode,
+            'agent_name'       => self::$agentName
         ];
 
         $result = cURL::newRequest('post', self::$domain . '/launch-game', $params)
-            ->setHeader('Authorization', 'xxx')
+            ->setHeader('Authorization', self::$header)
             ->send();
 
         return $result->body;

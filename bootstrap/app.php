@@ -52,7 +52,4 @@ $app->singleton(
 |
 */
 
-
-$app->configure('Game/majaSlot');
-
 return $app;
