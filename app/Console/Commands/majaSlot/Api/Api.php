@@ -71,4 +71,26 @@ class Api
 
         return $result->body;
     }
+
+    /**
+     * 存款
+     * @param $gameAccount
+     * @return mixed
+     */
+    public function credit($gameAccount)
+    {
+        $params = [
+            'play_unique_id' => $gameAccount,
+            'transfer_id' => '0001',
+            'amount' =>20.0000,
+
+        ];
+
+        $result = cURL::newRequest('post', self::$domain . '/deposit-from-wallet', $params)
+            ->setHeader('Authorization', self::$header)
+            ->send();
+
+        return $result->body;
+
+    }
 }

@@ -46,7 +46,7 @@ class CreateAccount extends Command
         # 建立資料，由於 maja 限制遊戲帳號最大為 50 ，因此這邊使用 Laravel 的內建函式，建立一個隨機的字串，並且長度為 50
         $gameAccount = Str::random(50);
 
-        $currency = 'CNY';
+        $currency = 'USD';
 
         $_model_api = new Api();
         $result = $_model_api->login($gameAccount, self::GAME_CODE, $currency, false);

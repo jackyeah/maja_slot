@@ -5,15 +5,14 @@ namespace App\Console\Commands\majaSlot;
 use Illuminate\Console\Command;
 use App\Console\Commands\majaSlot\Api\Api;
 
-class Login extends Command
+class Credit extends Command
 {
-    CONST GAME_CODE = 'burn-the-office';
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'maja:login {gameAccount} {gameId}';
+    protected $signature = 'maja:credit';
 
     /**
      * The console command description.
@@ -40,19 +39,17 @@ class Login extends Command
     public function handle()
     {
         $gameAccount = $this->argument('gameAccount');
-        $gameId = $this->argument('gameId');
-        $currency = 'USD';
 
         $_model_api = new Api();
-        $result = $_model_api->login($gameAccount, $gameId, $currency, false);
+        $result = $_model_api->credit($gameAccount);
         $resultArray = json_decode($result, true);
 
         if(!isset($resultArray['code']) || $resultArray['code'] != '0'){
-            var_dump('[10002] 呼叫遊戲商 Api 錯誤。');
+            var_dump('[10001] 呼叫遊戲商 Api 錯誤。');
             return false;
         }
 
-        dump('登入成功，遊戲連結為： ' . $resultArray['data']['game_url']);
+        dump('建立成功，遊戲餘額為： ' . $resultArray['success']['data']['balance']);
         return true;
     }
 }
