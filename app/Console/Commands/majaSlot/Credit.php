@@ -52,4 +52,5 @@ class Credit extends Command
         dump('建立成功，遊戲餘額為： ' . $resultArray['success']['data']['balance']);
         return true;
     }
+
 }
