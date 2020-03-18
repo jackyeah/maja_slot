@@ -37,13 +37,13 @@ class Api
     {
         $params = [
             'player_unique_id' => $gameAccount,
-            'player_name'      => Str::random(20),
-            'player_currency'  => $currency,
-            'game_id'          => $game_code,
-            'is_demo'          => $type,
-            'callback_url'     => $callback_url,
-            'agent_code'       => self::$agentCode,
-            'agent_name'       => self::$agentName
+            'player_name' => Str::random(20),
+            'player_currency' => $currency,
+            'game_id' => $game_code,
+            'is_demo' => $type,
+            'callback_url' => $callback_url,
+            'agent_code' => self::$agentCode,
+            'agent_name' => self::$agentName
         ];
 
         $result = cURL::newRequest('post', self::$domain . '/launch-game', $params)
@@ -62,7 +62,7 @@ class Api
     public function getPlayerBalance($gameAccount)
     {
         $params = [
-            'player_unique_id'  => $gameAccount,
+            'player_unique_id' => $gameAccount
         ];
 
         $result = cURL::newRequest('post', self::$domain . '/member-details', $params)
@@ -74,19 +74,20 @@ class Api
 
     /**
      * 存款
+     *
      * @param $gameAccount
+     * @param $balance
      * @return mixed
      */
-    public function credit($gameAccount)
+    public function credit($gameAccount, $balance)
     {
         $params = [
-            'play_unique_id' => $gameAccount,
-            'transfer_id' => '0001',
-            'amount' =>20.0000,
-
+            'player_unique_id' => $gameAccount,
+            'transfer_id' => Str::random(25),
+            'amount' => $balance
         ];
 
-        $result = cURL::newRequest('post', self::$domain . '/deposit-from-wallet', $params)
+        $result = cURL::newRequest('post', self::$domain . '/wallet/deposit', $params)
             ->setHeader('Authorization', self::$header)
             ->send();
 
