@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class CreateAccount extends Command
 {
     CONST PROVIDER_CODE = 'MAJASLOT';
-    CONST GAME_CODE = 'meow-meow';
+    CONST GAME_CODE = 'cross-the-road';
 
     /**
      * The name and signature of the console command.

@@ -7,7 +7,7 @@ use App\Console\Commands\majaSlot\Api\Api;
 
 class Login extends Command
 {
-    CONST GAME_CODE = 'meow-meow';
+    CONST GAME_CODE = 'cross-the-road';
     /**
      * The name and signature of the console command.
      *
