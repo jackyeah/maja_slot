@@ -8,8 +8,8 @@
 
 return [
     // 遊戲清單
-    'Authorization'     => 'Authorization',
-    'ApiUrl' => 'ApiUrl',
+    'Authorization'=> 'MdKKpJMVegjia1Jm',
+    'ApiUrl' => 'https://api.integration.mj-02.com/api/MOGI',
 
     'gameList' => [
         ['GameSlug' => 'meow-meow', 'NameEn' => 'Meow Meow', 'NameCn' => '喵喵'],
