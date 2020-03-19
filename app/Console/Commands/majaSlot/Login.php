@@ -7,7 +7,7 @@ use App\Console\Commands\majaSlot\Api\Api;
 
 class Login extends Command
 {
-    CONST GAME_CODE = 'burn-the-office';
+    CONST GAME_CODE = 'meow-meow';
     /**
      * The name and signature of the console command.
      *
@@ -41,14 +41,15 @@ class Login extends Command
     {
         $gameAccount = $this->argument('gameAccount');
         $gameId = $this->argument('gameId');
-        $currency = 'USD';
+        $currency = 'THB';
 
         $_model_api = new Api();
         $result = $_model_api->login($gameAccount, $gameId, $currency, false);
         $resultArray = json_decode($result, true);
+        //dd($resultArray);
 
         if(!isset($resultArray['code']) || $resultArray['code'] != '0'){
-            var_dump('[10002] 呼叫遊戲商 Api 錯誤。');
+            var_dump('[10000] 呼叫遊戲商 Api 錯誤。');
             return false;
         }
 

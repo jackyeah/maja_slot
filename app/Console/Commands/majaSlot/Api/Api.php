@@ -17,7 +17,7 @@ class Api
 
     public function __construct()
     {
-        self::$header = '0Y8sYtJi55Qeli4Z';
+        self::$header = 'MdKKpJMVegjia1Jm';
         self::$domain = 'https://api.integration.mj-02.com/api/MOGI';
         self::$agentCode = 'jpt';
         self::$agentName = 'jpt';
@@ -77,20 +77,45 @@ class Api
      * @param $gameAccount
      * @return mixed
      */
-    public function credit($gameAccount)
+    public function credit($gameAccount, $balance)
     {
         $params = [
-            'play_unique_id' => $gameAccount,
-            'transfer_id' => '0001',
-            'amount' =>20.0000,
+            'player_unique_id' => $gameAccount,
+            'transfer_id' => Str::random(25),
+            'amount' => $balance,
 
         ];
 
-        $result = cURL::newRequest('post', self::$domain . '/deposit-from-wallet', $params)
+        $result = cURL::newRequest('post', self::$domain . '/wallet/deposit', $params)
             ->setHeader('Authorization', self::$header)
             ->send();
 
         return $result->body;
 
     }
+
+    /**
+     * 提款
+     * @param $gameAccount
+     * @param $balance
+     * @return mixed
+     */
+    public function debit($gameAccount, $balance)
+    {
+        $params = [
+            'player_unique_id' => $gameAccount,
+            'transfer_id' => Str::random(25),
+            'amount' => $balance,
+
+        ];
+
+        $result = cURL::newRequest('post', self::$domain . '/wallet/withdraw', $params)
+            ->setHeader('Authorization', self::$header)
+            ->send();
+
+        return $result->body;
+
+    }
+
+
 }

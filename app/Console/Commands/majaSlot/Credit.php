@@ -12,7 +12,7 @@ class Credit extends Command
      *
      * @var string
      */
-    protected $signature = 'maja:credit';
+    protected $signature = 'maja:credit {gameAccount} {balance}';
 
     /**
      * The console command description.
@@ -41,15 +41,17 @@ class Credit extends Command
         $gameAccount = $this->argument('gameAccount');
 
         $_model_api = new Api();
-        $result = $_model_api->credit($gameAccount);
+        $balance = $this->argument('balance');
+        $result = $_model_api->credit($gameAccount, $balance);
         $resultArray = json_decode($result, true);
 
         if(!isset($resultArray['code']) || $resultArray['code'] != '0'){
-            var_dump('[10001] 呼叫遊戲商 Api 錯誤。');
+            var_dump('[10003] 呼叫遊戲商 Api 錯誤。');
             return false;
+            dd($resultArray);
         }
 
-        dump('建立成功，遊戲餘額為： ' . $resultArray['success']['data']['balance']);
+        dump('上分成功，玩家目前遊戲餘額為： ' . $resultArray['data']['balance']);
         return true;
     }
 

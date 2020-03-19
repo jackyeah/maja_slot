@@ -45,7 +45,7 @@ class GetBalance extends Command
         $resultArray = json_decode($result, true);
 
         if(!isset($resultArray['code']) || $resultArray['code'] != '0'){
-            var_dump('[10001] 呼叫遊戲商 Api 錯誤。');
+            var_dump('[10002] 呼叫遊戲商 Api 錯誤。');
             return false;
         }
 
