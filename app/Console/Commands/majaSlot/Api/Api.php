@@ -18,9 +18,9 @@ class Api
     public function __construct()
     {
         self::$header = config('Game.majaSlot.Authorization');;
-        self::$domain = 'https://api.integration.mj-02.com/api/MOGI';
-        self::$agentCode = 'jpt';
-        self::$agentName = 'jpt';
+        self::$domain = config('Game.majaSlot.ApiUrl');
+        self::$agentCode = config('Game.majaSlot.agentCode');
+        self::$agentName = config('Game.majaSlot.agentName');
     }
 
     /**

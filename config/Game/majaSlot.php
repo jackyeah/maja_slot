@@ -10,7 +10,8 @@ return [
     // 遊戲清單
     'Authorization'=> 'MdKKpJMVegjia1Jm',
     'ApiUrl' => 'https://api.integration.mj-02.com/api/MOGI',
-
+    'agentCode' => 'jiexun',
+    'agentName' => 'jiexuntest',
     'gameList' => [
         ['GameSlug' => 'meow-meow', 'NameEn' => 'Meow Meow', 'NameCn' => '喵喵'],
         ['GameSlug' => 'feed-the-zombie', 'NameEn' => 'Feed the Zombie', 'NameCn' => '丧尸大餐'],

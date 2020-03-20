@@ -7,7 +7,7 @@ use App\Console\Commands\majaSlot\Api\Api;
 
 class Login extends Command
 {
-    CONST GAME_CODE = 'cross-the-road';
+    //CONST GAME_CODE = 'cross-the-road';
     /**
      * The name and signature of the console command.
      *
@@ -41,7 +41,7 @@ class Login extends Command
     {
         $gameAccount = $this->argument('gameAccount');
         $gameId = $this->argument('gameId');
-        $currency = 'THB';
+        $currency = 'USD';
 
         $_model_api = new Api();
         $result = $_model_api->login($gameAccount, $gameId, $currency, false);
